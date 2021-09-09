@@ -53,7 +53,18 @@ public class HelloApplication extends Application {
         if (moodInput.equals("happy")) {
             gc.fillOval(220,370,200,100);
         } if (moodInput.equals("sad")) {
-            gc.fillOval(300,350,10,10);
+            gc.fillOval(300, 350 + 10, 10, 10);
+            gc.setFill(Color.DEEPSKYBLUE);
+            gc.fillOval(220, 220 + 20, 2, 2);
+            gc.fillOval(360, 220 + 30, 2, 2);
+            gc.fillOval(220, 220 + 40, 2, 2);
+            gc.fillOval(360, 220 + 50, 2, 2);
+            gc.fillOval(300, 350 + 60, 2, 2);
+            gc.fillOval(220, 220 + 70, 2, 2);
+            gc.fillOval(360, 220 + 80, 2, 2);
+            gc.fillOval(220, 220 + 90, 2, 2);
+            gc.fillOval(360, 220 + 100, 2, 2);
+
         }
     }
 
