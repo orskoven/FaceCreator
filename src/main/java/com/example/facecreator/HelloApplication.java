@@ -39,6 +39,7 @@ public class HelloApplication extends Application {
 
     public static void drawPrimitiveFace() {
         drawBlossingCheeks(false,"rød");
+        drawNose();
         drawShape();
         drawMouth();
         drawEyes();
@@ -97,18 +98,29 @@ public class HelloApplication extends Application {
         }
 
     }
+    public static  void drawNose(){
+        Random random = new Random();
+        int low1 = -15;
+        int high1 = 10;
+        int result2 = random.nextInt(high1 - low1) + low1;
+        int low = -10;
+        int high = 10;
+        int result = random.nextInt(high - low) + low;
+        gc.strokeLine(290+result2,300+result,290,310);
+        gc.strokeLine(310,310+result,290,310);
+    }
     public static void drawHair(){
         Random random = new Random();
         int low1 = 0;
-        int high1 = 50;
+        int high1 = 100;
         int result2 = random.nextInt(high1 - low1) + low1;
         int low = -5;
         int high = 100;
         int result = random.nextInt(high - low) + low;
         for (int i = 150; i < 300; i++){
-            gc.strokeLine(150+i,150-result,450,150-result2);
+            gc.strokeLine(i+0,150-result,450,150-result2);
             gc.strokeLine(450,150,450,150-result2);
-            gc.strokeLine(150+i,150-result,150,150);
+            gc.strokeLine(i+0,150-result,150,150);
             i++;
         }
     }
