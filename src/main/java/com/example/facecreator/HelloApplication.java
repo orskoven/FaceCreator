@@ -1,3 +1,5 @@
+package com.example.facecreator;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -37,6 +39,7 @@ public class HelloApplication extends Application {
         drawShape();
         drawMouth(50);
         drawEyes();
+        drawCheeks();
     }
 
     public static void drawShape() {
@@ -47,10 +50,16 @@ public class HelloApplication extends Application {
         gc.setFill(Color.BLACK);
         gc.fillOval(280,370,mouthSize,mouthSize);
     }
+    public static void drawCheeks() {
+        gc.setFill(Color.ORANGE);
+        gc.fillOval(250,250,20,20);
+        gc.fillOval(400,400,20,20);
+    }
+
 
     public static void drawEyes() {
         gc.setFill(Color.BLACK);
-        gc.fillOval(220,220,20,20);
+        gc.fillRoundRect(220,220,20,20,20,20);
         gc.fillOval(360,220,20,20);
     }
 
