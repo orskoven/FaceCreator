@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class HelloApplication extends Application {
     static int width = 600;
@@ -37,29 +38,28 @@ public class HelloApplication extends Application {
 
     public static void drawPrimitiveFace() {
         drawShape();
-        drawMouth(50);
+        drawMouth();
         drawEyes();
-        drawCheeks();
     }
 
     public static void drawShape() {
         gc.strokeOval(150, 150, 300, 300);
     }
 
-    public static void drawMouth(int mouthSize) {
-        gc.setFill(Color.BLACK);
-        gc.fillOval(280,370,mouthSize,mouthSize);
+    public static void drawMouth() {
+        System.out.println("Write your mood:");
+        Scanner scanner = new Scanner(System.in);
+        String moodInput = scanner.nextLine();
+        if (moodInput.equals("happy")) {
+            gc.fillOval(220,370,200,100);
+        } if (moodInput.equals("sad")) {
+            gc.fillOval(300,350,10,10);
+        }
     }
-    public static void drawCheeks() {
-        gc.setFill(Color.ORANGE);
-        gc.fillOval(250,250,20,20);
-        gc.fillOval(400,400,20,20);
-    }
-
 
     public static void drawEyes() {
         gc.setFill(Color.BLACK);
-        gc.fillRoundRect(220,220,20,20,20,20);
+        gc.fillOval(220,220,20,20);
         gc.fillOval(360,220,20,20);
     }
 
