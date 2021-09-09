@@ -1,5 +1,7 @@
 package com.example.facecreator;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -8,6 +10,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Random;
@@ -35,6 +38,12 @@ public class HelloApplication extends Application {
         drawPrimitiveFace();
 
         stage.show();
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), event -> {
+            gc.clearRect(0, 0, width, height);
+            drawPrimitiveFace();
+        }));
+        timeline.setCycleCount(360);
+        timeline.play();
     }
 
     public static void drawPrimitiveFace() {
@@ -77,7 +86,7 @@ public class HelloApplication extends Application {
     public static void drawMouth() {
         System.out.println("Write your mood:");
         Scanner scanner = new Scanner(System.in);
-        String moodInput = scanner.nextLine();
+        String moodInput = "sad";
         if (moodInput.equals("happy")) {
             gc.fillOval(220,370,200,100);
         } if (moodInput.equals("sad")) {
@@ -135,5 +144,6 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         launch();
+        
     }
 }
