@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class HelloApplication extends Application {
@@ -37,13 +38,39 @@ public class HelloApplication extends Application {
     }
 
     public static void drawPrimitiveFace() {
+        drawBlossingCheeks(false,"rød");
         drawShape();
         drawMouth();
         drawEyes();
+        drawHair();
+
     }
 
     public static void drawShape() {
-        gc.strokeOval(150, 150, 300, 300);
+        //højre side ansigtsform
+        gc.strokeLine(150,150,150,400);
+        gc.strokeLine(150,400,200,500);
+        gc.strokeLine(200,500,250,550);
+        gc.strokeLine(250,550,275,575);
+        gc.strokeLine(275,575,300,575);
+        // venstre side ansigtsform
+        gc.strokeLine(width - 150,150,width - 150,400);
+        gc.strokeLine(width - 150,400,width - 200,500);
+        gc.strokeLine(width - 200,500,width - 250,550);
+        gc.strokeLine(width - 250,550,width - 275,575);
+        gc.strokeLine(width - 275,575,width - 300,575);
+
+    }
+
+    public static void drawBlossingCheeks(boolean isBlussing, String cheekColor) {
+        if (isBlussing == true) {
+            if (cheekColor.equals("rød")) {
+                gc.setFill(Color.RED);
+                gc.fillOval(230, 220 + 100, 30, 30);
+                gc.fillOval(370, 220 + 100, 30, 30);
+            }
+        }
+
     }
 
     public static void drawMouth() {
@@ -55,21 +82,41 @@ public class HelloApplication extends Application {
         } if (moodInput.equals("sad")) {
             gc.fillOval(300, 350 + 10, 10, 10);
             gc.setFill(Color.DEEPSKYBLUE);
-            gc.fillOval(220, 220 + 20, 2, 2);
-            gc.fillOval(360, 220 + 30, 2, 2);
-            gc.fillOval(220, 220 + 40, 2, 2);
-            gc.fillOval(360, 220 + 50, 2, 2);
-            gc.fillOval(300, 350 + 60, 2, 2);
-            gc.fillOval(220, 220 + 70, 2, 2);
-            gc.fillOval(360, 220 + 80, 2, 2);
-            gc.fillOval(220, 220 + 90, 2, 2);
-            gc.fillOval(360, 220 + 100, 2, 2);
+            for (int i = 0; i < 600; i++) {
+                gc.fillOval(220, 220 + 10 + i, 2, 2);
+                gc.fillOval(width - 220 , 220 + 10 + i, 2, 2);
+                gc.fillOval(220, 220 + 40 + i, 2, 2);
+                gc.fillOval(width - 220, 220 + 50 + i, 2, 2);
+                gc.fillOval(220, 220 + 70 + i, 2, 2);
+                gc.fillOval(width - 220, 220 + 80 + i, 2, 2);
+                gc.fillOval(220, 220 + 90 + i, 2, 2);
+                gc.fillOval(width - 220, 220 + 100 + i, 2, 2);
+            }
 
+
+        }
+
+    }
+    public static void drawHair(){
+        Random random = new Random();
+        int low1 = 0;
+        int high1 = 50;
+        int result2 = random.nextInt(high1 - low1) + low1;
+        int low = -5;
+        int high = 100;
+        int result = random.nextInt(high - low) + low;
+        for (int i = 150; i < 300; i++){
+            gc.strokeLine(150+i,150-result,450,150-result2);
+            gc.strokeLine(450,150,450,150-result2);
+            gc.strokeLine(150+i,150-result,150,150);
+            i++;
         }
     }
 
     public static void drawEyes() {
         gc.setFill(Color.BLACK);
+        gc.strokeLine(205,210,240,210);
+        gc.strokeLine(width - 205,210,width - 240,210);
         gc.fillOval(220,220,20,20);
         gc.fillOval(360,220,20,20);
     }
