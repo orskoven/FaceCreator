@@ -84,12 +84,13 @@ public class HelloApplication extends Application {
     }
 
     public static void drawMouth() {
-        System.out.println("Write your mood:");
-        Scanner scanner = new Scanner(System.in);
-        String moodInput = "sad";
-        if (moodInput.equals("happy")) {
+        Random random = new Random();
+        int low1 = 0;
+        int high1 = 2;
+        int result2 = random.nextInt(high1 - low1) + low1;
+        if (result2 == 1) {
             gc.fillOval(220,370,200,100);
-        } if (moodInput.equals("sad")) {
+        } else {
             gc.fillOval(300, 350 + 10, 10, 10);
             gc.setFill(Color.DEEPSKYBLUE);
             for (int i = 0; i < 600; i++) {
