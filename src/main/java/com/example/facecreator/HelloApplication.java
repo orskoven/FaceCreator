@@ -57,18 +57,27 @@ public class HelloApplication extends Application {
     }
 
     public static void drawShape() {
-        //højre side ansigtsform
-        gc.strokeLine(150,150,150,400);
-        gc.strokeLine(150,400,200,500);
-        gc.strokeLine(200,500,250,550);
-        gc.strokeLine(250,550,275,575);
-        gc.strokeLine(275,575,300,575);
-        // venstre side ansigtsform
-        gc.strokeLine(width - 150,150,width - 150,400);
-        gc.strokeLine(width - 150,400,width - 200,500);
-        gc.strokeLine(width - 200,500,width - 250,550);
-        gc.strokeLine(width - 250,550,width - 275,575);
-        gc.strokeLine(width - 275,575,width - 300,575);
+        Random random = new Random();
+        int low1 = -200;
+        int high1 = 30;
+        int result2 = random.nextInt(high1 - low1) + low1;
+        Random random2 = new Random();
+        int low = -50;
+        int high = 50;
+        int result = random2.nextInt(high - low) + low;
+        //venstre side ansigtsform
+        gc.setLineWidth(5.);
+        gc.strokeLine(150,150,150+result2,400+result2);
+        gc.strokeLine(150+result2,400+result2,200+result2,500+result2);
+        gc.strokeLine(200+result2,500+result2,250+result2,550+result2);
+        gc.strokeLine(250+result2,550+result2,275+result2,575+result2);
+        gc.strokeLine(275+result2,575+result2,300-result,575-result);
+        // højre side ansigtsform
+        gc.strokeLine(width - 150,150,width - 150-result2,400-result2);
+        gc.strokeLine(width - 150-result2,400-result2,width - 200-result2,500-result2);
+        gc.strokeLine(width - 200-result2,500-result2,width - 250-result2,550-result2);
+        gc.strokeLine(width - 250-result2,550-result2,width - 275-result2,575-result2);
+        gc.strokeLine(width - 275-result2,575-result2,width - 300-result,575-result);
 
     }
 
@@ -86,29 +95,29 @@ public class HelloApplication extends Application {
     public static void drawMouth() {
         Random random = new Random();
         int low1 = 0;
-        int high1 = 2;
+        int high1 = 600;
         int result2 = random.nextInt(high1 - low1) + low1;
-        if (result2 == 1) {
-            gc.fillOval(220,370,200,100);
-        } else {
+        Random random2 = new Random();
+        int low = - 100;
+        int high = 600;
+        int result = random2.nextInt(high - low) + low;
             gc.fillOval(300, 350 + 10, 10, 10);
             gc.setFill(Color.DEEPSKYBLUE);
-            for (int i = 0; i < 600; i++) {
-                gc.fillOval(220, 220 + 10 + i, 2, 2);
-                gc.fillOval(width - 220 , 220 + 10 + i, 2, 2);
-                gc.fillOval(220, 220 + 40 + i, 2, 2);
-                gc.fillOval(width - 220, 220 + 50 + i, 2, 2);
-                gc.fillOval(220, 220 + 70 + i, 2, 2);
-                gc.fillOval(width - 220, 220 + 80 + i, 2, 2);
-                gc.fillOval(220, 220 + 90 + i, 2, 2);
-                gc.fillOval(width - 220, 220 + 100 + i, 2, 2);
+            for (int j = 220 % 2; j < 400; j++) {
+                gc.fillOval(230, 230 + result2, 2, result2);
+                j++;
             }
+            for (int i = 220; i < 400; i++){
+            gc.fillOval(width - 230, width - 230 + result, 2, result);
+                i++;
 
 
+
+            }
         }
 
-    }
-    public static  void drawNose(){
+
+    public static void drawNose(){
         Random random = new Random();
         int low1 = -15;
         int high1 = 10;
@@ -119,18 +128,35 @@ public class HelloApplication extends Application {
         gc.strokeLine(290+result2,300+result,290,310);
         gc.strokeLine(310,310+result,290,310);
     }
-    public static void drawHair(){
+    public static void drawHair() {
+/*
         Random random = new Random();
         int low1 = 0;
-        int high1 = 100;
+        int high1 = 150;
         int result2 = random.nextInt(high1 - low1) + low1;
         int low = -5;
-        int high = 100;
+        int high = 150;
         int result = random.nextInt(high - low) + low;
-        for (int i = 150; i < 300; i++){
-            gc.strokeLine(i+0,150-result,450,150-result2);
-            gc.strokeLine(450,150,450,150-result2);
-            gc.strokeLine(i+0,150-result,150,150);
+        for (int i = 150; i < 300; i++) {
+            gc.strokeLine(i + 0, 150 - result, 450, 150 - result2);
+            gc.strokeLine(450, 150, 450, 150 - result2);
+            gc.strokeLine(i + 0, 150 - result, 150, 150);
+            i++;
+        }
+
+ */
+
+        Random random = new Random();
+        int low1 = 0;
+        int high1 = 150;
+        int result2 = random.nextInt(high1 - low1) + low1;
+        int low = -5;
+        int high = 150;
+        int result = random.nextInt(high - low) + low;
+        for (int i = 150; i < 300; i++) {
+            gc.strokeLine(i + 0, 150 - result, 450, 150 - result2);
+            gc.strokeLine(450, 150, 450, 150 - result2);
+            gc.strokeLine(i + 0, 150 - result, 150, 150);
             i++;
         }
     }
