@@ -8,7 +8,9 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -47,6 +49,7 @@ public class HelloApplication extends Application {
     }
 
     public static void drawPrimitiveFace() {
+        drawText();
         drawNose();
         drawShape(150, 150);
         drawMouth();
@@ -62,7 +65,7 @@ public class HelloApplication extends Application {
         int result2 = random.nextInt(high1 - low1) + low1;
         Random random2 = new Random();
         int low = 0;
-        int high = 2;
+        int high = 10;
         int result = random2.nextInt(high - low) + low;
         //venstre side ansigtsform1
         gc.setLineWidth(5.);
@@ -78,6 +81,16 @@ public class HelloApplication extends Application {
         gc.strokeLine(width - 250 - result2, 550 - result2, width - 275 - result2, 575 - result2);
         gc.strokeLine(width - 275 - result2, 575 - result2, width - 300 - result, 575 - result);
 
+    }
+    public static void drawText() {
+        Random random = new Random();
+        String[] randomNames = {"kurt", "Børge", "Lars", "Preben", "Egon", "Henry", "Olof","Clark","Kent","Gunnar","Morten",};
+        int high = randomNames.length - 1;
+        int low = 0;
+        int result = random.nextInt(high - low) + low;
+        gc.setFill(Color.BLACK);
+        gc.setLineWidth(12.);
+        gc.fillText(randomNames[result],50,50);
     }
 
 
@@ -106,7 +119,6 @@ public class HelloApplication extends Application {
             i++;
         }
     }
-
 
     public static void drawNose() {
         Random random = new Random();
@@ -152,7 +164,7 @@ public class HelloApplication extends Application {
                 i++;
             }
         }
-        
+
         public static void drawEyes ( int high3, int low3){
             Random random = new Random();
             int result3 = random.nextInt(high3 - low3) + low3;
